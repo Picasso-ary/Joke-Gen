@@ -6,11 +6,11 @@
   <title>Joke Generator</title>
   <style>
     body {
-      font-family: 'Press Start 2P', cursive; /* Retro pixel font */
+      font-family: 'Press Start 2P', cursive;
       text-align: center;
       padding: 50px;
-      background-color: #222; /* Dark background as a fallback */
-      background-image: url('https://www.transparenttextures.com/patterns/8bit.png'); /* Retro 8-bit pixel pattern */
+      background-color: #222; 
+      background-image: url('https://www.transparenttextures.com/patterns/8bit.png'); 
       background-size: 100%;
       background-position: center;
       background-attachment: fixed;
@@ -38,7 +38,7 @@
     }
   </style>
 
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> <!-- Retro pixel font -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -69,10 +69,15 @@
       }
     }
 
-    // Function to play the audio
+    // Function to play the audio (with a check to ensure it works)
     function playAudio() {
       const audio = document.getElementById('background-audio');
-      audio.play();
+      
+      // Try to play the audio, if not, alert the user
+      audio.play().catch(err => {
+        console.error("Audio play failed: ", err);
+        alert("Audio failed to play. Please check your browser settings.");
+      });
     }
   </script>
 
