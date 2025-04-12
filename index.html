@@ -11,11 +11,11 @@
       padding: 50px;
       background-color: #222; /* Dark background as a fallback */
       background-image: url('https://www.transparenttextures.com/patterns/8bit.png'); /* Retro 8-bit pixel pattern */
-      background-size: 100%; /* Ensure the pattern repeats */
+      background-size: 100%;
       background-position: center;
       background-attachment: fixed;
       color: white;
-      min-height: 100vh; /* Ensures the background covers the full screen */
+      min-height: 100vh;
     }
 
     #joke {
@@ -39,7 +39,6 @@
   </style>
 
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> <!-- Retro pixel font -->
-
 </head>
 <body>
 
@@ -48,8 +47,8 @@
 
   <button onclick="getJoke()">Tell me a joke</button>
 
-  <!-- Safe Audio Track -->
-  <audio autoplay loop>
+  <!-- Audio to play -->
+  <audio id="background-audio" autoplay loop>
     <source src="https://www.freemusicarchive.org/music/download/0040_Mario_and_Luigi_Overworld.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
@@ -66,13 +65,14 @@
         const data = await res.json();
         document.getElementById('joke').innerText = data.joke;  // Display the joke
       } else {
-        document.getElementById('joke').innerText = "Oops! Something went wrong.";
+        document.getElementById('joke').innerText = "Oops! Something went wrong."; // Error message
       }
     }
   </script>
 
 </body>
 </html>
+
 
 
 
