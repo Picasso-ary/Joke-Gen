@@ -9,12 +9,12 @@
       font-family: 'Press Start 2P', cursive; /* Retro pixel font */
       text-align: center;
       padding: 50px;
-      background-image: url('https://media.giphy.com/media/3o7TKTYGvXh0RDo2Yw/giphy.gif'); /* Safe animated background */
+      background-image: url('https://www.transparenttextures.com/patterns/8bit.png'); /* Retro pixel pattern background */
       background-size: cover;
       background-position: center;
       background-attachment: fixed; /* Keeps the background fixed */
       color: white;
-      min-height: 100vh; /* Ensure the background covers the full screen */
+      min-height: 100vh; /* Ensures the background covers the full screen */
     }
 
     #joke {
@@ -64,25 +64,8 @@
   <script>
     const images = [
       "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",  // Laughing GIF
-      "https://media.giphy.com/media/l0K4f3H2W8zqC9ckg/giphy.gif",  // LOL face GIF
-      "https://media.giphy.com/media/3o7TKnq0w2CmAq0Qfk/giphy.gif",  // Rolling on floor laughing GIF
-      "https://media.giphy.com/media/26uf6rDg4c5tbTfrG/giphy.gif"   // Funny facepalm GIF
-    ];
+      "https://media.giphy.com/media/l0K4f3H2W8zqC9ckg/giphy.gif",  //
 
-    async function getJoke() {
-      const res = await fetch('https://icanhazdadjoke.com/', {
-        headers: { 'Accept': 'application/json' }
-      });
-      const data = await res.json();
-      document.getElementById('joke').innerText = data.joke;
-
-      // Show a random image after joke
-      const randomImg = images[Math.floor(Math.random() * images.length)];
-      const imgElement = document.getElementById('jokeImage');
-      imgElement.src = randomImg;
-      imgElement.style.display = 'block'; // Show image
-    }
-  </script>
 
 </body>
 </html>
