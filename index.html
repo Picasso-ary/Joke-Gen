@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Random Joke Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      background-color: #f0f8ff;
+      padding: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #joke {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>😂 Random Joke Generator</h1>
+  <button onclick="getJoke()">Tell me a joke</button>
+  <div id="joke"></div>
+
+  <script>
+    async function getJoke() {
+      const res = await fetch('https://icanhazdadjoke.com/', {
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      const data = await res.json();
+      document.getElementById('joke').innerText = data.joke;
+    }
+  </script>
+</body>
+</html>
