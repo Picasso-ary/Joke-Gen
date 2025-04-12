@@ -45,10 +45,10 @@
   <h1>Welcome to the Joke Generator!</h1>
   <p id="joke">Click the button below to hear a joke!</p>
 
-  <button onclick="getJoke()">Tell me a joke</button>
+  <button onclick="getJoke(); playAudio()">Tell me a joke</button>
 
-  <!-- Audio to play -->
-  <audio id="background-audio" autoplay loop>
+  <!-- Safe Audio Track -->
+  <audio id="background-audio" loop>
     <source src="https://www.freemusicarchive.org/music/download/0040_Mario_and_Luigi_Overworld.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
@@ -67,6 +67,12 @@
       } else {
         document.getElementById('joke').innerText = "Oops! Something went wrong."; // Error message
       }
+    }
+
+    // Function to play the audio
+    function playAudio() {
+      const audio = document.getElementById('background-audio');
+      audio.play();
     }
   </script>
 
