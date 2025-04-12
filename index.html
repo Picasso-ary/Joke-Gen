@@ -9,11 +9,11 @@
       font-family: 'Press Start 2P', cursive;
       text-align: center;
       padding: 50px;
-      background-color: #222; 
-      background-image: url('https://www.transparenttextures.com/patterns/8bit.png'); 
-      background-size: 100%;
+      background-color: #222; /* fallback color */
+      background-image: url('https://www.transparenttextures.com/patterns/8bit.png'); /* Pixelated background */
+      background-size: 100% 100%; /* Ensure it covers the screen */
       background-position: center;
-      background-attachment: fixed;
+      background-attachment: fixed; /* Ensure it stays fixed */
       color: white;
       min-height: 100vh;
     }
@@ -45,13 +45,7 @@
   <h1>Welcome to the Joke Generator!</h1>
   <p id="joke">Click the button below to hear a joke!</p>
 
-  <button onclick="getJoke(); playAudio()">Tell me a joke</button>
-
-  <!-- Safe Audio Track -->
-  <audio id="background-audio" loop>
-    <source src="https://www.freemusicarchive.org/music/download/0040_Mario_and_Luigi_Overworld.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+  <button onclick="getJoke()">Tell me a joke</button>
 
   <script>
     // Function to fetch a joke from the API
@@ -68,22 +62,10 @@
         document.getElementById('joke').innerText = "Oops! Something went wrong."; // Error message
       }
     }
-
-    // Function to play the audio (with a check to ensure it works)
-    function playAudio() {
-      const audio = document.getElementById('background-audio');
-      
-      // Try to play the audio, if not, alert the user
-      audio.play().catch(err => {
-        console.error("Audio play failed: ", err);
-        alert("Audio failed to play. Please check your browser settings.");
-      });
-    }
   </script>
 
 </body>
 </html>
-
 
 
 
