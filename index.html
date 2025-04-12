@@ -9,10 +9,11 @@
       font-family: 'Press Start 2P', cursive; /* Retro pixel font */
       text-align: center;
       padding: 50px;
-      background-image: url('https://www.transparenttextures.com/patterns/8bit.png'); /* Retro pixel pattern background */
-      background-size: cover;
+      background-color: #222; /* Dark background as a fallback */
+      background-image: url('https://www.transparenttextures.com/patterns/8bit.png'); /* Retro 8-bit pixel pattern */
+      background-size: 100%; /* Ensure the pattern repeats */
       background-position: center;
-      background-attachment: fixed; /* Keeps the background fixed */
+      background-attachment: fixed;
       color: white;
       min-height: 100vh; /* Ensures the background covers the full screen */
     }
@@ -20,12 +21,6 @@
     #joke {
       font-size: 1.5em;
       margin-bottom: 20px;
-    }
-
-    #jokeImage {
-      width: 300px;
-      margin-top: 20px;
-      display: none;
     }
 
     button {
@@ -53,8 +48,6 @@
 
   <button onclick="getJoke()">Tell me a joke</button>
 
-  <img id="jokeImage" alt="Joke Image">
-
   <!-- Safe Audio Track -->
   <audio autoplay loop>
     <source src="https://www.freemusicarchive.org/music/download/0040_Mario_and_Luigi_Overworld.mp3" type="audio/mp3">
@@ -62,12 +55,24 @@
   </audio>
 
   <script>
-    const images = [
-      "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",  // Laughing GIF
-      "https://media.giphy.com/media/l0K4f3H2W8zqC9ckg/giphy.gif",  //
+    // Function to fetch a joke from the API
+    async function getJoke() {
+      const res = await fetch('https://icanhazdadjoke.com/', {
+        headers: { 'Accept': 'application/json' }
+      });
 
+      // Check if the response is ok
+      if (res.ok) {
+        const data = await res.json();
+        document.getElementById('joke').innerText = data.joke;  // Display the joke
+      } else {
+        document.getElementById('joke').innerText = "Oops! Something went wrong.";
+      }
+    }
+  </script>
 
 </body>
 </html>
+
 
 
