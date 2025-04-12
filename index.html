@@ -1,64 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Random Joke Generator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joke Generator</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
       text-align: center;
-      background-color: #f0f8ff;
       padding: 50px;
+      background-color: #f4f4f9;
     }
-    h1 {
+    #joke {
+      font-size: 1.5em;
+      margin-bottom: 20px;
       color: #333;
     }
+    #jokeImage {
+      width: 300px;
+      margin-top: 20px;
+      display: none;
+    }
     button {
+      font-size: 1.2em;
       padding: 10px 20px;
-      font-size: 18px;
-      background-color: #4CAF50;
+      cursor: pointer;
+      background-color: #5cb85c;
       color: white;
       border: none;
       border-radius: 5px;
-      cursor: pointer;
     }
-    #joke {
-      margin-top: 30px;
-      font-size: 20px;
-      color: #555;
+    button:hover {
+      background-color: #4cae4c;
     }
   </style>
 </head>
 <body>
-  <h1>😂 Random Joke Generator</h1>
+
+  <h1>Welcome to the Joke Generator!</h1>
+  <p id="joke">Click the button below to hear a joke!</p>
+
   <button onclick="getJoke()">Tell me a joke</button>
-  <div id="joke"></div>
-<img id="jokeImage" src="" alt="" style="margin-top: 20px; max-width: 200px; display: none;">
+
+  <img id="jokeImage" alt="Joke Image">
 
   <script>
-  
-  const images = [
-  "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",  // Laughing GIF
-  "https://media.giphy.com/media/l0K4f3H2W8zqC9ckg/giphy.gif",  // LOL face GIF
-  "https://media.giphy.com/media/3o7TKnq0w2CmAq0Qfk/giphy.gif",  // Rolling on floor laughing GIF
-  "https://media.giphy.com/media/26uf6rDg4c5tbTfrG/giphy.gif"   // Funny facepalm GIF
-];
+    // Array of images to show randomly
+    const images = [
+      "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",  // Laughing GIF
+      "https://media.giphy.com/media/l0K4f3H2W8zqC9ckg/giphy.gif",  // LOL face GIF
+      "https://media.giphy.com/media/3o7TKnq0w2CmAq0Qfk/giphy.gif",  // Rolling on floor laughing GIF
+      "https://media.giphy.com/media/26uf6rDg4c5tbTfrG/giphy.gif"   // Funny facepalm GIF
+    ];
 
-async function getJoke() {
-  const res = await fetch('https://icanhazdadjoke.com/', {
-    headers: { 'Accept': 'application/json' }
-  });
-  const data = await res.json();
-  document.getElementById('joke').innerText = data.joke;
+    // Function to fetch and display a joke
+    async function getJoke() {
+      const res = await fetch('https://icanhazdadjoke.com/', {
+        headers: { 'Accept': 'application/json' }
+      });
+      const data = await res.json();
+      document.getElementById('joke').innerText = data.joke;
 
-  // Show a random image
-  const randomImg = images[Math.floor(Math.random() * images.length)];
-  const imgElement = document.getElementById('jokeImage');
-  imgElement.src = randomImg;
-  imgElement.style.display = 'block'; // Show image after joke
-}
-
+      // Show a random image
+      const randomImg = images[Math.floor(Math.random() * images.length)];
+      const imgElement = document.getElementById('jokeImage');
+      imgElement.src = randomImg;
+      imgElement.style.display = 'block'; // Show image after joke
+    }
   </script>
+
 </body>
 </html>
+
