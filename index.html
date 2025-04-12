@@ -34,17 +34,30 @@
   <h1>😂 Random Joke Generator</h1>
   <button onclick="getJoke()">Tell me a joke</button>
   <div id="joke"></div>
+<img id="jokeImage" src="" alt="" style="margin-top: 20px; max-width: 200px; display: none;">
 
   <script>
-    async function getJoke() {
-      const res = await fetch('https://icanhazdadjoke.com/', {
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-      const data = await res.json();
-      document.getElementById('joke').innerText = data.joke;
-    }
+    const images = [
+  "https://i.imgur.com/1QgrNNw.gif",  // laughing
+  "https://i.imgur.com/1X0Zf1R.png",  // LOL face
+  "https://i.imgur.com/hJ3sZ4w.gif",  // rolling on floor
+  "https://i.imgur.com/5cVRFbr.png"   // haha cartoon
+];
+
+async function getJoke() {
+  const res = await fetch('https://icanhazdadjoke.com/', {
+    headers: { 'Accept': 'application/json' }
+  });
+  const data = await res.json();
+  document.getElementById('joke').innerText = data.joke;
+
+  // Show a random image
+  const randomImg = images[Math.floor(Math.random() * images.length)];
+  const imgElement = document.getElementById('jokeImage');
+  imgElement.src = randomImg;
+  imgElement.style.display = 'block'; // Show image after joke
+}
+
   </script>
 </body>
 </html>
